@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Brand Tokens ── */
+  --primary: #5522e0;
+  --primary-accent: #bcb3ff;
+  --secondary: #f4a60b;
+  --secondary-accent: #ffd9a1;
+
+  /* ── Gradient Tokens ── */
+  --gradient-start: #5522e0;
+  --gradient-end: #f4a60b;
+
+  /* ── Background Tokens ── */
+  --background: #09090b;
+  --surface: #111113;
+  --surface-elevated: #16161a;
+
+  /* ── Text Tokens ── */
+  --text-primary: #f4f4f5;
+  --text-secondary: #8b8b8e;
+  --text-muted: #52525b;
+
+  /* ── Border Tokens ── */
+  --border: #1e1e24;
+  --border-light: #2a2a32;
+
+  /* ── Derived Opacity Tokens ── */
+  --primary-8: #5522e014;
+  --primary-12: #5522e01f;
+  --primary-20: #5522e033;
+  --primary-25: #5522e040;
+  --secondary-8: #f4a60b14;
+  --secondary-12: #f4a60b1f;
+  --secondary-20: #f4a60b33;
+  --secondary-25: #f4a60b40;
+}
+
+@layer base {
+  html, body {
+    height: 100%;
+  }
+
+  .font-outfit {
+    font-family: "Archivo", sans-serif;
+    font-stretch: semi-expanded;
+  }
+
+  .font-inter {
+    font-family: "Inter", sans-serif;
+  }
+
+  /* ── Gradient Utilities ── */
+  .gradient-text {
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-reverse {
+    background: linear-gradient(180deg, var(--secondary), var(--primary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-btn {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  }
+
+  .gradient-btn:hover {
+    filter: brightness(1.1);
+  }
+
+  /* ── Batik-textured button ── */
+  .btn-batik {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .btn-batik::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/digital-batik.png");
+    background-size: 400% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    filter: brightness(1.8) contrast(1.4) saturate(0.2);
+    mix-blend-mode: overlay;
+    z-index: 1;
+    transition: opacity 0.4s ease, background-size 0.4s ease;
+  }
+
+  .btn-batik:hover::before {
+    opacity: 0.28;
+    background-size: 380% auto;
+  }
+
+  .btn-batik > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Scrolling tape ── */
+  .animate-scroll-left {
+    animation: scroll-left 40s linear infinite;
+  }
+
+  .animate-scroll-left:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-scroll-right {
+    animation: scroll-right 40s linear infinite;
+  }
+
+  .animate-scroll-right:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
