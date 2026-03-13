@@ -62,9 +62,9 @@ function AnimatedStat({
   const count = useCountUp(value, 2000, inView);
 
   return (
-    <div className="flex flex-col items-center gap-[8px]">
+    <div className="flex flex-col items-center gap-[4px] md:gap-[8px]">
       <span
-        className={`font-outfit text-[56px] font-extrabold tracking-[-2px] tabular-nums ${
+        className={`font-outfit text-[32px] md:text-[56px] font-extrabold tracking-[-1px] md:tracking-[-2px] tabular-nums ${
           gradient
             ? reverse
               ? "gradient-text-reverse"
@@ -119,20 +119,20 @@ export default function Stats() {
     <section className="w-full bg-[var(--surface)]">
       <div
         ref={sectionRef}
-        className="flex flex-col items-center gap-[64px] w-full max-w-[1280px] mx-auto px-[80px] py-[100px]"
+        className="flex flex-col items-center gap-[40px] md:gap-[64px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[100px]"
       >
         {/* Header */}
         <div className="flex flex-col items-center gap-[16px]">
           <span className="font-inter text-[12px] font-semibold text-[var(--primary-accent)] tracking-[3px]">
             OUR IMPACT
           </span>
-          <h2 className="font-outfit text-[40px] font-bold text-[var(--text-primary)] tracking-[-1.5px] text-center">
+          <h2 className="font-outfit text-[28px] md:text-[40px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-1.5px] text-center">
             Growing Malaysia's builder ecosystem.
           </h2>
         </div>
 
         {/* Stats Row */}
-        <div className="flex justify-between w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[24px] md:gap-[16px] w-full">
           {stats.map((s) => (
             <AnimatedStat
               key={s.label}

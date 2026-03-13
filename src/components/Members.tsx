@@ -93,13 +93,13 @@ export default function Members() {
 
   return (
     <section id="community" className="w-full bg-[var(--surface)]">
-      <div className="flex flex-col items-center gap-[64px] w-full max-w-[1280px] mx-auto px-[80px] py-[120px]">
+      <div className="flex flex-col items-center gap-[40px] md:gap-[64px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[120px]">
         {/* Header */}
         <div className="flex flex-col items-center gap-[16px]">
           <span className="font-inter text-[12px] font-semibold text-[var(--primary-accent)] tracking-[3px]">
             COMMUNITY
           </span>
-          <h2 className="font-outfit text-[40px] font-bold text-[var(--text-primary)] tracking-[-1.5px]">
+          <h2 className="font-outfit text-[28px] md:text-[40px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-1.5px]">
             Meet the builders.
           </h2>
           <p className="font-inter text-[16px] text-[var(--text-secondary)] text-center max-w-[520px]">
@@ -113,7 +113,7 @@ export default function Members() {
             <div className="w-[24px] h-[24px] border-2 border-[var(--primary-accent)] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-[28px] w-full max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[28px] w-full">
             {builders.map((b) => (
               <BuilderCard key={b.name} member={b as Member} />
             ))}

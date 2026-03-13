@@ -25,19 +25,19 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="w-full bg-[var(--surface)]">
-      <div className="flex flex-col items-center gap-[48px] w-full max-w-[1280px] mx-auto px-[80px] py-[100px]">
+      <div className="flex flex-col items-center gap-[32px] md:gap-[48px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[100px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-[16px]">
         <span className="font-inter text-[12px] font-semibold text-[var(--primary-accent)] tracking-[3px]">
           WALL OF LOVE
         </span>
-        <h2 className="font-outfit text-[40px] font-bold text-[var(--text-primary)] tracking-[-1.5px]">
+        <h2 className="font-outfit text-[28px] md:text-[40px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-1.5px]">
           What builders say.
         </h2>
       </div>
 
       {/* Testimonials Grid */}
-      <div className="grid grid-cols-3 gap-[20px] w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[20px] w-full">
         {testimonials.map((t) => (
           <div
             key={t.name}

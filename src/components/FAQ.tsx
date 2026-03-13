@@ -14,13 +14,13 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="w-full bg-[var(--background)]">
-      <div className="flex flex-col items-center gap-[48px] w-full max-w-[1280px] mx-auto px-[80px] py-[100px]">
+      <div className="flex flex-col items-center gap-[32px] md:gap-[48px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[100px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-[16px]">
         <span className="font-inter text-[12px] font-semibold text-[var(--secondary)] tracking-[3px]">
           FAQ
         </span>
-        <h2 className="font-outfit text-[40px] font-bold text-[var(--text-primary)] tracking-[-1.5px]">
+        <h2 className="font-outfit text-[28px] md:text-[40px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-1.5px]">
           Common questions.
         </h2>
       </div>

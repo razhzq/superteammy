@@ -318,7 +318,7 @@ export default function Mission() {
     <section id="mission" className="w-full bg-[var(--background)]">
       <div
         ref={sectionRef}
-        className="flex flex-col items-center gap-[64px] w-full max-w-[1280px] mx-auto px-[80px] py-[120px]"
+        className="flex flex-col items-center gap-[40px] md:gap-[64px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[120px]"
       >
         {/* Header */}
         <motion.div
@@ -330,7 +330,7 @@ export default function Mission() {
           <span className="font-inter text-[12px] font-semibold text-[var(--secondary)] tracking-[3px]">
             WHAT WE DO
           </span>
-          <h2 className="font-outfit text-[44px] font-bold text-[var(--text-primary)] tracking-[-2px] leading-[1.15] text-center max-w-[700px]">
+          <h2 className="font-outfit text-[28px] md:text-[44px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-2px] leading-[1.15] text-center max-w-[700px]">
             Building the Solana ecosystem
             <br />
             in Malaysia.
@@ -339,7 +339,7 @@ export default function Mission() {
 
         {/* Pillars Grid */}
         {isInView && (
-          <div className="grid grid-cols-3 gap-[20px] w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[20px] w-full">
             {pillars.map((p, i) => (
               <PillarCard key={p.title} pillar={p} index={i} />
             ))}

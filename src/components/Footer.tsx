@@ -80,11 +80,11 @@ export default function Footer() {
       {/* ── Dark overlay for text readability ── */}
       <div className="absolute inset-0 bg-black/75 pointer-events-none" />
 
-      <div className="relative flex flex-col w-full max-w-[1280px] mx-auto px-[80px]">
+      <div className="relative flex flex-col w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px]">
         {/* ── Main footer: brand left + link columns right ── */}
-        <div className="flex gap-[80px] pt-[72px] pb-[64px]">
+        <div className="flex flex-col md:flex-row gap-[40px] md:gap-[80px] pt-[48px] md:pt-[72px] pb-[40px] md:pb-[64px]">
           {/* Brand column */}
-          <div className="flex flex-col gap-[24px] w-[300px] shrink-0">
+          <div className="flex flex-col gap-[24px] w-full md:w-[300px] shrink-0">
             <img
               src="/superteam-footer.png"
               alt="Superteam Malaysia"
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="flex-1 grid grid-cols-4 gap-[32px]">
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-[24px] md:gap-[32px]">
             {footerLinks.map((col) => (
               <div key={col.heading} className="flex flex-col gap-[20px]">
                 <span className="font-inter text-[11px] font-semibold text-white/50 tracking-[2px] uppercase">
@@ -138,7 +138,7 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="flex items-center justify-between w-full py-[24px] border-t border-white/15">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-[12px] w-full py-[24px] border-t border-white/15">
           <span className="font-inter text-[12px] text-white/40">
             © 2026 Superteam Malaysia. All rights reserved.
           </span>

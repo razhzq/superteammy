@@ -48,8 +48,8 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-[100vh] bg-[var(--background)] overflow-hidden flex items-center">
-      {/* Malaysia Map */}
-      <div className="absolute top-0 right-[-40px] w-[48%] h-full flex items-center justify-center">
+      {/* Malaysia Map — hidden on mobile */}
+      <div className="absolute top-0 right-[-40px] w-[48%] h-full hidden md:flex items-center justify-center">
         <div className="relative w-full h-full">
           <Suspense fallback={null}>
             <MalaysiaMap />
@@ -62,14 +62,14 @@ export default function Hero() {
       <div className="absolute w-[400px] h-[400px] rounded-full right-[25%] bottom-[15%] opacity-15 bg-[radial-gradient(circle,var(--secondary-12),transparent)] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-[1280px] mx-auto px-[80px] py-[120px] flex flex-col gap-[40px] pointer-events-none">
+      <div className="relative z-20 w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[80px] md:py-[120px] flex flex-col gap-[32px] md:gap-[40px] pointer-events-none">
         <div className="flex flex-col gap-[4px] max-w-[560px]">
-          <h1 className="font-outfit text-[72px] font-extrabold text-white tracking-[-3px] leading-[1.05] whitespace-nowrap">
+          <h1 className="font-outfit text-[36px] md:text-[56px] lg:text-[72px] font-extrabold text-white tracking-[-2px] md:tracking-[-3px] leading-[1.1] md:leading-[1.05]">
             {headline}
           </h1>
-          <div className="relative h-[68px] overflow-hidden">
+          <div className="relative h-[42px] md:h-[56px] lg:h-[68px] overflow-hidden">
             <h1
-              className="font-outfit text-[60px] font-extrabold tracking-[-2.5px] leading-[1.1] gradient-text whitespace-nowrap transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="font-outfit text-[32px] md:text-[48px] lg:text-[60px] font-extrabold tracking-[-1.5px] md:tracking-[-2.5px] leading-[1.1] gradient-text transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
               style={{
                 transform: isAnimating ? "translateY(-100%)" : "translateY(0)",
                 opacity: isAnimating ? 0 : 1,
@@ -80,18 +80,18 @@ export default function Hero() {
           </div>
         </div>
 
-        <p className="font-inter text-[18px] text-[var(--text-secondary)] leading-[1.8] max-w-[460px] whitespace-pre-line">
+        <p className="font-inter text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7] md:leading-[1.8] max-w-[460px] whitespace-pre-line">
           {subheadline}
         </p>
 
-        <div className="flex items-center gap-[16px] pt-[8px] pointer-events-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[12px] md:gap-[16px] pt-[8px] pointer-events-auto">
           <button
             onClick={handleCtaClick}
-            className="gradient-btn btn-batik rounded-[10px] px-[32px] py-[16px] font-inter text-[16px] font-semibold text-[var(--text-primary)] cursor-pointer transition-all"
+            className="gradient-btn btn-batik rounded-[10px] px-[24px] md:px-[32px] py-[14px] md:py-[16px] font-inter text-[15px] md:text-[16px] font-semibold text-[var(--text-primary)] cursor-pointer transition-all"
           >
             <span>{ctaText}</span>
           </button>
-          <button className="flex items-center gap-[8px] rounded-[10px] px-[32px] py-[16px] bg-[var(--primary-8)] border border-[var(--border-light)] font-inter text-[16px] font-medium text-[var(--text-primary)] cursor-pointer hover:bg-[var(--primary-12)] transition-colors">
+          <button className="flex items-center justify-center gap-[8px] rounded-[10px] px-[24px] md:px-[32px] py-[14px] md:py-[16px] bg-[var(--primary-8)] border border-[var(--border-light)] font-inter text-[15px] md:text-[16px] font-medium text-[var(--text-primary)] cursor-pointer hover:bg-[var(--primary-12)] transition-colors">
             Explore Opportunities
             <span className="text-[var(--text-secondary)]">→</span>
           </button>

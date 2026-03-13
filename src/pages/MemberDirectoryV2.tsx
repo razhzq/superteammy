@@ -124,33 +124,36 @@ function TagBadge({ label, color }: { label: string; color: "primary" | "seconda
 
 function MemberCard({ member, index }: { member: Member; index: number }) {
   return (
-    <div className="flex items-center gap-[24px] w-full rounded-[14px] bg-[var(--surface)] border border-[var(--border)] px-[28px] py-[20px] hover:border-[var(--border-light)] transition-colors">
-      {/* Avatar */}
-      <img
-        src={PORTRAITS[index % PORTRAITS.length]}
-        alt={member.name}
-        className="w-[48px] h-[48px] shrink-0 rounded-full object-cover"
-      />
+    <div className="flex flex-col md:flex-row md:items-center gap-[12px] md:gap-[24px] w-full rounded-[14px] bg-[var(--surface)] border border-[var(--border)] px-[20px] md:px-[28px] py-[16px] md:py-[20px] hover:border-[var(--border-light)] transition-colors">
+      {/* Top row on mobile: avatar + info */}
+      <div className="flex items-center gap-[12px] md:gap-[24px]">
+        {/* Avatar */}
+        <img
+          src={PORTRAITS[index % PORTRAITS.length]}
+          alt={member.name}
+          className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] shrink-0 rounded-full object-cover"
+        />
 
-      {/* Info */}
-      <div className="flex flex-col gap-[2px] w-[220px] shrink-0">
-        <span className="font-inter text-[15px] font-semibold text-[var(--text-primary)] tracking-[-0.3px]">
-          {member.name}
-        </span>
-        <span className="font-inter text-[13px] text-[var(--text-secondary)]">
-          {member.title}
-        </span>
+        {/* Info */}
+        <div className="flex flex-col gap-[2px] md:w-[220px] shrink-0">
+          <span className="font-inter text-[14px] md:text-[15px] font-semibold text-[var(--text-primary)] tracking-[-0.3px]">
+            {member.name}
+          </span>
+          <span className="font-inter text-[12px] md:text-[13px] text-[var(--text-secondary)]">
+            {member.title}
+          </span>
+        </div>
       </div>
 
       {/* Tags */}
-      <div className="flex items-center gap-[8px] flex-1">
+      <div className="flex items-center gap-[6px] md:gap-[8px] flex-wrap md:flex-nowrap flex-1 pl-[52px] md:pl-0">
         {member.tags.map((tag) => (
           <TagBadge key={tag.label} label={tag.label} color={tag.color} />
         ))}
       </div>
 
-      {/* Social */}
-      <div className="flex items-center justify-center w-[32px] h-[32px] shrink-0">
+      {/* Social — hidden on mobile */}
+      <div className="hidden md:flex items-center justify-center w-[32px] h-[32px] shrink-0">
         <Twitter className="w-[16px] h-[16px] text-[var(--text-muted)]" />
       </div>
     </div>
@@ -178,8 +181,8 @@ export default function MemberDirectoryV2() {
       <Navigation />
 
       {/* Header */}
-      <div className="relative flex flex-col items-center gap-[16px] w-full pt-[80px] px-[40px]">
-        <h1 className="font-outfit text-[40px] font-bold text-[var(--text-primary)] tracking-[-1.2px] text-center">
+      <div className="relative flex flex-col items-center gap-[12px] md:gap-[16px] w-full pt-[48px] md:pt-[80px] px-[20px] md:px-[40px]">
+        <h1 className="font-outfit text-[28px] md:text-[40px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-1.2px] text-center">
           Superteam Malaysia Contributors
         </h1>
         <p className="font-inter text-[16px] text-[var(--text-secondary)] text-center max-w-[600px]">
@@ -188,8 +191,8 @@ export default function MemberDirectoryV2() {
       </div>
 
       {/* Search */}
-      <div className="relative flex items-center justify-center w-full pt-[40px] px-[40px]">
-        <div className="flex items-center gap-[12px] w-[720px] h-[56px] rounded-[16px] bg-[var(--surface-elevated)] border border-[var(--border)] px-[20px] shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
+      <div className="relative flex items-center justify-center w-full pt-[28px] md:pt-[40px] px-[20px] md:px-[40px]">
+        <div className="flex items-center gap-[12px] w-full max-w-[720px] h-[48px] md:h-[56px] rounded-[12px] md:rounded-[16px] bg-[var(--surface-elevated)] border border-[var(--border)] px-[16px] md:px-[20px] shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
           <Search className="w-[20px] h-[20px] text-[var(--text-muted)]" />
           <input
             type="text"
@@ -200,7 +203,7 @@ export default function MemberDirectoryV2() {
       </div>
 
       {/* Filter Pills */}
-      <div className="relative flex items-center justify-center gap-[10px] w-full pt-[32px] pb-[40px] px-[40px]">
+      <div className="relative flex items-center justify-center flex-wrap gap-[8px] md:gap-[10px] w-full pt-[24px] md:pt-[32px] pb-[28px] md:pb-[40px] px-[20px] md:px-[40px]">
         {FILTERS.map((filter) => {
           const isActive = filter === activeFilter;
           return (
@@ -224,9 +227,9 @@ export default function MemberDirectoryV2() {
       </div>
 
       {/* Member List */}
-      <div className="relative flex flex-col gap-[12px] w-full px-[80px] pb-[80px]">
-        {/* List Header */}
-        <div className="flex items-center gap-[24px] w-full px-[28px] opacity-50">
+      <div className="relative flex flex-col gap-[12px] w-full px-[20px] md:px-[80px] pb-[60px] md:pb-[80px]">
+        {/* List Header — hidden on mobile */}
+        <div className="hidden md:flex items-center gap-[24px] w-full px-[28px] opacity-50">
           <div className="w-[48px]" />
           <div className="w-[220px]">
             <span className="font-inter text-[11px] font-semibold text-[var(--text-muted)] tracking-[0.8px] uppercase">

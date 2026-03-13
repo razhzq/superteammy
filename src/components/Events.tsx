@@ -20,13 +20,13 @@ export default function Events() {
 
   return (
     <section id="events" className="w-full bg-[var(--background)]">
-      <div className="flex items-start gap-[64px] w-full max-w-[1280px] mx-auto px-[80px] py-[120px]">
+      <div className="flex flex-col lg:flex-row items-start gap-[40px] lg:gap-[64px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[120px]">
         {/* Left: Header */}
-        <div className="flex flex-col gap-[20px] w-[340px] shrink-0 sticky top-[100px]">
+        <div className="flex flex-col gap-[20px] w-full lg:w-[340px] shrink-0 lg:sticky lg:top-[100px]">
           <span className="font-inter text-[13px] font-semibold text-[var(--secondary)] tracking-[4px] uppercase">
             Events
           </span>
-          <h2 className="font-outfit text-[48px] font-extrabold text-[var(--text-primary)] tracking-[-2.5px] leading-[1.08]">
+          <h2 className="font-outfit text-[32px] md:text-[48px] font-extrabold text-[var(--text-primary)] tracking-[-1.5px] md:tracking-[-2.5px] leading-[1.08]">
             {titleParts.length > 1 ? (
               <>
                 {titleParts[0]}
@@ -65,7 +65,7 @@ export default function Events() {
             allowFullScreen
             aria-hidden="false"
             tabIndex={0}
-            className="w-full border-none min-h-[75vh]"
+            className="w-full border-none min-h-[50vh] md:min-h-[75vh]"
             style={{ background: "#0a0a0c" }}
           />
         </div>

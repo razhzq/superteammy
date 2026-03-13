@@ -12,8 +12,8 @@ export default function JoinCTA() {
 
   return (
     <section className="w-full bg-[var(--surface)]">
-      <div className="flex flex-col items-center justify-center gap-[40px] w-full max-w-[1280px] mx-auto px-[80px] py-[120px]">
-        <h2 className="font-outfit text-[56px] font-extrabold text-[var(--text-primary)] tracking-[-2.5px] leading-[1.1] text-center max-w-[600px]">
+      <div className="flex flex-col items-center justify-center gap-[28px] md:gap-[40px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] py-[60px] md:py-[120px]">
+        <h2 className="font-outfit text-[32px] md:text-[56px] font-extrabold text-[var(--text-primary)] tracking-[-1.5px] md:tracking-[-2.5px] leading-[1.1] text-center max-w-[600px]">
           {titleParts.length > 1 ? (
             <>
               {titleParts[0]}
@@ -24,22 +24,22 @@ export default function JoinCTA() {
             title
           )}
         </h2>
-        <p className="font-inter text-[18px] text-[var(--text-secondary)] text-center">
+        <p className="font-inter text-[15px] md:text-[18px] text-[var(--text-secondary)] text-center">
           {description}
         </p>
-        <div className="flex items-center gap-[16px]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[12px] md:gap-[16px]">
           <a
             href={buttonUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="gradient-btn btn-batik rounded-[10px] px-[28px] py-[14px] font-inter text-[15px] font-semibold text-[var(--text-primary)] cursor-pointer transition-all"
+            className="gradient-btn btn-batik rounded-[10px] px-[28px] py-[14px] font-inter text-[15px] font-semibold text-[var(--text-primary)] cursor-pointer transition-all text-center"
           >
             <span>{buttonText}</span>
           </a>
-          <button className="rounded-[10px] px-[28px] py-[14px] bg-[var(--primary-8)] border border-[var(--border-light)] font-inter text-[15px] font-medium text-[var(--text-primary)] cursor-pointer hover:bg-[var(--primary-12)] transition-colors">
+          <button className="rounded-[10px] px-[28px] py-[14px] bg-[var(--primary-8)] border border-[var(--border-light)] font-inter text-[15px] font-medium text-[var(--text-primary)] cursor-pointer hover:bg-[var(--primary-12)] transition-colors text-center">
             Join Discord
           </button>
-          <button className="rounded-[10px] px-[28px] py-[14px] bg-[var(--primary-8)] border border-[var(--border-light)] font-inter text-[15px] font-medium text-[var(--text-primary)] cursor-pointer hover:bg-[var(--primary-12)] transition-colors">
+          <button className="rounded-[10px] px-[28px] py-[14px] bg-[var(--primary-8)] border border-[var(--border-light)] font-inter text-[15px] font-medium text-[var(--text-primary)] cursor-pointer hover:bg-[var(--primary-12)] transition-colors text-center">
             Follow on X
           </button>
         </div>

@@ -21,13 +21,13 @@ export default function Partners() {
 
   return (
     <section className="relative w-full bg-[var(--background)] overflow-hidden">
-      <div className="flex flex-col items-center gap-[56px] w-full max-w-[1280px] mx-auto px-[80px] pt-[100px] pb-[80px]">
+      <div className="flex flex-col items-center gap-[40px] md:gap-[56px] w-full max-w-[1280px] mx-auto px-[20px] md:px-[80px] pt-[60px] md:pt-[100px] pb-[40px] md:pb-[80px]">
         {/* Header */}
         <div className="flex flex-col items-center gap-[16px]">
           <span className="font-inter text-[12px] font-semibold text-[var(--secondary)] tracking-[3px]">
             ECOSYSTEM
           </span>
-          <h2 className="font-outfit text-[40px] font-bold text-[var(--text-primary)] tracking-[-1.5px]">
+          <h2 className="font-outfit text-[28px] md:text-[40px] font-bold text-[var(--text-primary)] tracking-[-1px] md:tracking-[-1.5px]">
             Partners & ecosystem.
           </h2>
         </div>
@@ -36,8 +36,8 @@ export default function Partners() {
       {/* Scrolling tape */}
       <div className="relative w-full pb-[100px]">
         {/* Edge fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-[120px] z-10 pointer-events-none" style={{ background: "linear-gradient(to right, var(--background), transparent)" }} />
-        <div className="absolute right-0 top-0 bottom-0 w-[120px] z-10 pointer-events-none" style={{ background: "linear-gradient(to left, var(--background), transparent)" }} />
+        <div className="absolute left-0 top-0 bottom-0 w-[40px] md:w-[120px] z-10 pointer-events-none" style={{ background: "linear-gradient(to right, var(--background), transparent)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-[40px] md:w-[120px] z-10 pointer-events-none" style={{ background: "linear-gradient(to left, var(--background), transparent)" }} />
 
         {tape.length > 0 ? (
           <div className="flex gap-[24px] animate-scroll-left">
