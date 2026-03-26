@@ -12,18 +12,23 @@ import FAQ from "./components/FAQ";
 import JoinCTA from "./components/JoinCTA";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
-import MemberDirectoryV2 from "./pages/MemberDirectoryV2";
+import StudentsDirectory from "./pages/StudentsDirectory";
+import RegisterPage from "./pages/RegisterPage";
 
 /* ── Admin (lazy-loaded) ── */
 const AdminLayout = lazy(() => import("./components/admin/AdminLayout"));
 const ProtectedRoute = lazy(() => import("./components/admin/ProtectedRoute"));
 const DashboardPage = lazy(() => import("./pages/admin/DashboardPage"));
+const StudentsPage = lazy(() => import("./pages/admin/StudentsPage"));
+const EmailBlastPage = lazy(() => import("./pages/admin/EmailBlastPage"));
+const WhatsAppBlastPage = lazy(() => import("./pages/admin/WhatsAppBlastPage"));
 const EventsPage = lazy(() => import("./pages/admin/EventsPage"));
 const MembersPage = lazy(() => import("./pages/admin/MembersPage"));
 const PartnersPage = lazy(() => import("./pages/admin/PartnersPage"));
 const ProjectsPage = lazy(() => import("./pages/admin/ProjectsPage"));
 const AnnouncementsPage = lazy(() => import("./pages/admin/AnnouncementsPage"));
 const LandingPage = lazy(() => import("./pages/admin/LandingPage"));
+const QRRegistrationPage = lazy(() => import("./pages/admin/QRRegistrationPage"));
 
 const AdminSpinner = () => (
   <div className="flex items-center justify-center w-full h-screen bg-[var(--background)]">
@@ -54,7 +59,8 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/directory" element={<MemberDirectoryV2 />} />
+      <Route path="/directory" element={<StudentsDirectory />} />
+      <Route path="/register" element={<RegisterPage />} />
 
       {/* Admin routes */}
       <Route
@@ -68,12 +74,16 @@ function App() {
         }
       >
         <Route index element={<Suspense fallback={<AdminSpinner />}><DashboardPage /></Suspense>} />
+        <Route path="students" element={<Suspense fallback={<AdminSpinner />}><StudentsPage /></Suspense>} />
+        <Route path="email-blast" element={<Suspense fallback={<AdminSpinner />}><EmailBlastPage /></Suspense>} />
+        <Route path="whatsapp-blast" element={<Suspense fallback={<AdminSpinner />}><WhatsAppBlastPage /></Suspense>} />
         <Route path="events" element={<Suspense fallback={<AdminSpinner />}><EventsPage /></Suspense>} />
         <Route path="members" element={<Suspense fallback={<AdminSpinner />}><MembersPage /></Suspense>} />
         <Route path="partners" element={<Suspense fallback={<AdminSpinner />}><PartnersPage /></Suspense>} />
         <Route path="projects" element={<Suspense fallback={<AdminSpinner />}><ProjectsPage /></Suspense>} />
         <Route path="announcements" element={<Suspense fallback={<AdminSpinner />}><AnnouncementsPage /></Suspense>} />
         <Route path="landing" element={<Suspense fallback={<AdminSpinner />}><LandingPage /></Suspense>} />
+        <Route path="qr-registration" element={<Suspense fallback={<AdminSpinner />}><QRRegistrationPage /></Suspense>} />
       </Route>
     </Routes>
   );

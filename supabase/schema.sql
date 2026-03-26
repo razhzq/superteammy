@@ -1,5 +1,5 @@
 -- ============================================================
--- Superteam Malaysia CMS — Supabase Schema
+-- Dentistry School Student Management System — Supabase Schema
 -- Auth: Privy (external) | Data: Supabase
 -- Run this in Supabase SQL Editor to set up your database.
 -- ============================================================
@@ -7,84 +7,84 @@
 create extension if not exists "uuid-ossp";
 
 -- ── Custom Types ──
-create type user_role as enum ('admin', 'editor');
-create type content_status as enum ('draft', 'published');
+create type user_role as enum ('admin', 'editor', 'viewer');
+create type student_status as enum ('active', 'graduated', 'suspended', 'withdrawn');
+create type year_level as enum ('year_1', 'year_2', 'year_3', 'year_4', 'year_5', 'postgrad');
 
 -- ── Profiles (keyed by Privy user ID) ──
 create table profiles (
   id text primary key,
   email text not null default '',
-  role user_role not null default 'editor',
+  role user_role not null default 'viewer',
   full_name text,
   avatar_url text,
   created_at timestamptz not null default now()
 );
 
--- ── Events ──
-create table events (
+-- ── Students ──
+create table students (
   id uuid primary key default uuid_generate_v4(),
-  title text not null,
-  description text not null,
-  event_date timestamptz not null,
-  location text not null,
-  image_url text,
-  registration_link text,
-  status content_status not null default 'draft',
+  student_id text unique not null, -- e.g., "DS2024001"
+  full_name text not null,
+  email text,
+  phone text,
+  date_of_birth date,
+  gender text,
+  
+  -- Academic Info
+  year_level year_level not null,
+  specialty text, -- e.g., "Orthodontics", "Endodontics", "General Dentistry"
+  enrollment_date date not null,
+  expected_graduation_date date,
+  status student_status not null default 'active',
+  
+  -- Location/Campus
+  campus_location text, -- e.g., "Main Campus", "Branch A"
+  
+  -- Additional Info
+  emergency_contact_name text,
+  emergency_contact_phone text,
+  notes text,
+  
+  -- Metadata
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
--- ── Members ──
-create table members (
+-- ── Courses ──
+create table courses (
   id uuid primary key default uuid_generate_v4(),
-  name text not null,
-  role text not null,
-  company text not null,
-  bio text,
-  avatar_url text,
-  skills text[] not null default '{}',
-  twitter_url text,
-  is_featured boolean not null default false,
+  course_code text unique not null, -- e.g., "DENT101"
+  course_name text not null,
+  description text,
+  credits integer,
+  year_level year_level,
+  specialty text,
   created_at timestamptz not null default now()
 );
 
--- ── Partners ──
-create table partners (
+-- ── Student Course Enrollments ──
+create table enrollments (
   id uuid primary key default uuid_generate_v4(),
-  name text not null,
-  logo_url text not null,
-  website_url text,
+  student_id uuid not null references students(id) on delete cascade,
+  course_id uuid not null references courses(id) on delete cascade,
+  semester text, -- e.g., "Fall 2024", "Spring 2025"
+  grade text, -- e.g., "A", "B+", "Pass"
+  status text default 'enrolled', -- enrolled, completed, dropped
+  enrolled_at timestamptz not null default now(),
+  completed_at timestamptz,
+  unique(student_id, course_id, semester)
+);
+
+-- ── Import History (track CSV imports) ──
+create table import_history (
+  id uuid primary key default uuid_generate_v4(),
+  filename text not null,
+  records_imported integer not null default 0,
+  records_failed integer not null default 0,
+  imported_by text, -- Privy user ID
+  import_notes text,
   created_at timestamptz not null default now()
-);
-
--- ── Projects ──
-create table projects (
-  id uuid primary key default uuid_generate_v4(),
-  name text not null,
-  description text not null,
-  logo_url text,
-  project_url text,
-  created_at timestamptz not null default now()
-);
-
--- ── Announcements ──
-create table announcements (
-  id uuid primary key default uuid_generate_v4(),
-  title text not null,
-  content text not null,
-  cover_image_url text,
-  status content_status not null default 'draft',
-  published_at timestamptz,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
--- ── Landing Content ──
-create table landing_content (
-  id uuid primary key default uuid_generate_v4(),
-  section text not null unique,
-  content_json jsonb not null default '{}',
-  updated_at timestamptz not null default now()
 );
 
 -- ── Auto-update updated_at ──
@@ -96,52 +96,40 @@ begin
 end;
 $$ language plpgsql;
 
-create trigger set_events_updated_at
-  before update on events for each row execute function update_updated_at();
+create trigger set_students_updated_at
+  before update on students for each row execute function update_updated_at();
 
-create trigger set_announcements_updated_at
-  before update on announcements for each row execute function update_updated_at();
-
-create trigger set_landing_content_updated_at
-  before update on landing_content for each row execute function update_updated_at();
+-- ── Indexes for performance ──
+create index idx_students_student_id on students(student_id);
+create index idx_students_status on students(status);
+create index idx_students_year_level on students(year_level);
+create index idx_students_specialty on students(specialty);
+create index idx_students_campus on students(campus_location);
+create index idx_enrollments_student on enrollments(student_id);
+create index idx_enrollments_course on enrollments(course_id);
 
 -- ============================================================
 -- Row Level Security (RLS)
 -- ============================================================
--- NOTE: Auth is handled by Privy (external), not Supabase Auth.
--- Access control is enforced at the application level via
--- ProtectedRoute and role checks. RLS is disabled so the
--- Supabase anon key can perform CRUD from the admin dashboard.
---
--- For production hardening, consider:
--- 1. Forwarding Privy JWTs to Supabase as custom JWTs
--- 2. Using a Supabase Edge Function proxy with Privy verification
--- ============================================================
-
--- Public read access for landing page content
-alter table events enable row level security;
-alter table members enable row level security;
-alter table partners enable row level security;
-alter table projects enable row level security;
-alter table announcements enable row level security;
-alter table landing_content enable row level security;
 alter table profiles enable row level security;
+alter table students enable row level security;
+alter table courses enable row level security;
+alter table enrollments enable row level security;
+alter table import_history enable row level security;
 
 -- Allow all operations via anon key (app-level auth via Privy)
 create policy "Allow all" on profiles for all using (true) with check (true);
-create policy "Allow all" on events for all using (true) with check (true);
-create policy "Allow all" on members for all using (true) with check (true);
-create policy "Allow all" on partners for all using (true) with check (true);
-create policy "Allow all" on projects for all using (true) with check (true);
-create policy "Allow all" on announcements for all using (true) with check (true);
-create policy "Allow all" on landing_content for all using (true) with check (true);
+create policy "Allow all" on students for all using (true) with check (true);
+create policy "Allow all" on courses for all using (true) with check (true);
+create policy "Allow all" on enrollments for all using (true) with check (true);
+create policy "Allow all" on import_history for all using (true) with check (true);
 
 -- ============================================================
 -- Storage bucket for media uploads
 -- ============================================================
 -- In Supabase Dashboard > Storage:
--- 1. Create a bucket named "media" (public)
--- 2. Add policy: allow all operations (since auth is external)
+-- 1. Create a bucket named "media" (public) - for student photos, documents
+-- 2. Create a bucket named "imports" (private) - for CSV import files
 
 -- ============================================================
 -- First admin setup

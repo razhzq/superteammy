@@ -73,14 +73,17 @@ export function useEvents(status?: ContentStatus, realtime = false) {
 }
 
 export async function createEvent(event: Omit<Event, "id" | "created_at" | "updated_at">) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("events").insert(event).select().single();
 }
 
 export async function updateEvent(id: string, updates: Partial<Event>) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("events").update(updates).eq("id", id).select().single();
 }
 
 export async function deleteEvent(id: string) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("events").delete().eq("id", id);
 }
 
@@ -96,14 +99,17 @@ export function useMembers(featuredOnly?: boolean, realtime = false) {
 }
 
 export async function createMember(member: Omit<Member, "id" | "created_at">) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("members").insert(member).select().single();
 }
 
 export async function updateMember(id: string, updates: Partial<Member>) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("members").update(updates).eq("id", id).select().single();
 }
 
 export async function deleteMember(id: string) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("members").delete().eq("id", id);
 }
 
@@ -114,14 +120,17 @@ export function usePartners(realtime = false) {
 }
 
 export async function createPartner(partner: Omit<Partner, "id" | "created_at">) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("partners").insert(partner).select().single();
 }
 
 export async function updatePartner(id: string, updates: Partial<Partner>) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("partners").update(updates).eq("id", id).select().single();
 }
 
 export async function deletePartner(id: string) {
+  if (!isSupabaseConfigured) return { data: null, error: new Error("Supabase not configured") };
   return supabase.from("partners").delete().eq("id", id);
 }
 

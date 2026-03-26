@@ -1,10 +1,12 @@
 {
+  "type": "module",
   "name": "superteammy-fe",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "node server.js",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:api\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -13,13 +15,20 @@
     "@ledgerhq/crypto-icons": "^1.4.0",
     "@privy-io/react-auth": "^3.17.0",
     "@supabase/supabase-js": "^2.99.1",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
     "framer-motion": "^12.35.2",
     "lucide-react": "^0.577.0",
+    "nodemailer": "^8.0.4",
     "prop-types": "^15.8.1",
+    "qrcode.react": "^4.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",
-    "react-simple-maps": "^3.0.0"
+    "react-simple-maps": "^3.0.0",
+    "resend": "^6.9.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

@@ -1,0 +1,6 @@
+student_id,full_name,email,phone,date_of_birth,gender,year_level,specialty,enrollment_date,expected_graduation_date,status,campus_location,emergency_contact_name,emergency_contact_phone,notes
+DS2024001,Ahmad bin Abdullah,ahmad.abdullah@dental.edu.my,+60123456789,2002-05-15,Male,year_2,General Dentistry,2023-09-01,2028-06-30,active,Main Campus,Siti Abdullah,+60198765432,Excellent student
+DS2024002,Siti Nurhaliza,siti.nurhaliza@dental.edu.my,+60187654321,2001-08-22,Female,year_3,Orthodontics,2022-09-01,2027-06-30,active,Main Campus,Ahmad Nurhaliza,+60123456780,Dean's list
+DS2024003,Lee Wei Ming,lee.weiming@dental.edu.my,+60165432109,2003-01-10,Male,year_1,General Dentistry,2024-09-01,2029-06-30,active,Branch A,Lee Chong Wei,+60198765433,Transfer student
+DS2024004,Priya Devi,priya.devi@dental.edu.my,+60134567890,2000-11-30,Female,year_4,Endodontics,2021-09-01,2026-06-30,active,Main Campus,Raj Devi,+60187654322,Research assistant
+DS2024005,Muhammad Hafiz,hafiz.muhammad@dental.edu.my,+60145678901,2002-03-18,Male,year_2,Periodontics,2023-09-01,2028-06-30,active,Branch A,Fatimah Hafiz,+60176543210,Part-time student

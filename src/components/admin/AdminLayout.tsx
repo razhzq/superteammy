@@ -1,19 +1,24 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
-  Calendar,
+  Mail,
+  MessageCircle,
   Users,
   Handshake,
   FolderOpen,
   Megaphone,
   FileText,
   LogOut,
+  QrCode,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutDashboard, to: "/admin" },
-  { label: "Events", icon: Calendar, to: "/admin/events" },
+  { label: "Students", icon: Users, to: "/admin/students" },
+  { label: "QR Registration", icon: QrCode, to: "/admin/qr-registration" },
+  { label: "Email Blast", icon: Mail, to: "/admin/email-blast" },
+  { label: "WhatsApp Blast", icon: MessageCircle, to: "/admin/whatsapp-blast" },
   { label: "Members", icon: Users, to: "/admin/members" },
   { label: "Partners", icon: Handshake, to: "/admin/partners" },
   { label: "Projects", icon: FolderOpen, to: "/admin/projects" },
