@@ -1,7 +1,7 @@
 const testimonials = [
   {
     quote:
-      "\u201CSuperteam MY connected me with the right people and my project got funded within weeks. The community is incredibly supportive.\u201D",
+      "\u201CAncora Imparo connected me with the right people and my project got funded within weeks. The community is incredibly supportive.\u201D",
     name: "Hafiz Ibrahim",
     role: "DeFi Builder",
     gradient: "from-[var(--primary-25)] to-[var(--secondary-20)]",

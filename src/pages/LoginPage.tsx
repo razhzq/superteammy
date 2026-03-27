@@ -55,7 +55,7 @@ export default function LoginPage() {
             Building the future of Web3 in Malaysia.
           </span>
           <span className="font-inter text-[13px] text-[#F5F5F5] opacity-30 tracking-[0.5px]">
-            Superteam Malaysia
+            Ancora Imparo
           </span>
         </div>
       </div>
@@ -78,14 +78,13 @@ export default function LoginPage() {
             boxShadow: "0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)",
           }}
         >
-          <img src="/superteam-white.png" alt="Superteam" className="w-[48px] h-[48px]" />
           <div className="h-[28px]" />
           <h1 className="font-inter text-[24px] font-semibold text-[var(--text-primary)] tracking-[-0.5px]">
-            Welcome to Superteam
+            Welcome to Ancora Imparo
           </h1>
           <div className="h-[8px]" />
           <p className="font-inter text-[14px] text-[var(--text-secondary)] text-center max-w-[320px]">
-            Sign in to manage Superteam Malaysia content.
+            Sign in to manage Ancora Imparo content.
           </p>
           <div className="h-[36px]" />
 

@@ -64,14 +64,8 @@ export default function Navigation() {
           className="flex items-center gap-[10px] cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <img
-            src="/superteam-white.png"
-            alt="Superteam"
-            className="w-[24px] h-[24px]"
-          />
           <span className="font-outfit text-[18px] font-bold tracking-[-0.3px]">
-            <span className="text-white">Superteam</span>
-            <span className="text-white/40">MY</span>
+            <span className="text-white">Ancora Imparo</span>
           </span>
         </div>
 

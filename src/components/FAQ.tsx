@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-  "What is Superteam Malaysia?",
+  "What is Ancora Imparo?",
   "How do I join?",
   "What opportunities are available?",
   "How can projects collaborate with us?",

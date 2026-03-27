@@ -4,10 +4,6 @@ import {
   Mail,
   MessageCircle,
   Users,
-  Handshake,
-  FolderOpen,
-  Megaphone,
-  FileText,
   LogOut,
   QrCode,
 } from "lucide-react";
@@ -19,11 +15,11 @@ const NAV_ITEMS = [
   { label: "QR Registration", icon: QrCode, to: "/admin/qr-registration" },
   { label: "Email Blast", icon: Mail, to: "/admin/email-blast" },
   { label: "WhatsApp Blast", icon: MessageCircle, to: "/admin/whatsapp-blast" },
-  { label: "Members", icon: Users, to: "/admin/members" },
-  { label: "Partners", icon: Handshake, to: "/admin/partners" },
-  { label: "Projects", icon: FolderOpen, to: "/admin/projects" },
-  { label: "Announcements", icon: Megaphone, to: "/admin/announcements" },
-  { label: "Landing Page", icon: FileText, to: "/admin/landing" },
+  // { label: "Members", icon: Users, to: "/admin/members" },
+  // { label: "Partners", icon: Handshake, to: "/admin/partners" },
+  // { label: "Projects", icon: FolderOpen, to: "/admin/projects" },
+  // { label: "Announcements", icon: Megaphone, to: "/admin/announcements" },
+  // { label: "Landing Page", icon: FileText, to: "/admin/landing" },
 ];
 
 export default function AdminLayout() {
@@ -32,7 +28,7 @@ export default function AdminLayout() {
 
   async function handleSignOut() {
     await logout();
-    navigate("/login");
+    navigate("/");
   }
 
   return (
@@ -41,7 +37,6 @@ export default function AdminLayout() {
       <aside className="flex flex-col w-[240px] shrink-0 border-r border-[var(--border)] bg-[var(--surface)]">
         {/* Brand */}
         <div className="flex items-center gap-[10px] h-[64px] px-[20px]">
-          <img src="/superteam-white.png" alt="Superteam" className="w-[24px] h-[24px]" />
           <span className="font-outfit text-[16px] font-bold text-[var(--text-primary)]">
             Admin
           </span>

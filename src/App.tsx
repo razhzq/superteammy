@@ -1,19 +1,8 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import Hero from "./components/Hero";
-import Mission from "./components/Mission";
-import Stats from "./components/Stats";
-import Events from "./components/Events";
-import Members from "./components/Members";
-import Partners from "./components/Partners";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import JoinCTA from "./components/JoinCTA";
-import Footer from "./components/Footer";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import StudentsDirectory from "./pages/StudentsDirectory";
-import RegisterPage from "./pages/RegisterPage";
+import { useAuth } from "./context/AuthContext";
 
 /* ── Admin (lazy-loaded) ── */
 const AdminLayout = lazy(() => import("./components/admin/AdminLayout"));
@@ -36,31 +25,24 @@ const AdminSpinner = () => (
   </div>
 );
 
-function HomePage() {
-  return (
-    <div className="flex flex-col w-full min-h-full bg-[var(--background)]">
-      <Navigation />
-      <Hero />
-      <Mission />
-      <Stats />
-      <Events />
-      <Members />
-      <Partners />
-      <Testimonials />
-      <FAQ />
-      <JoinCTA />
-      <Footer />
-    </div>
-  );
+function RequireAuth({ children }: { children: React.ReactNode }) {
+  const { authenticated, loading } = useAuth();
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center w-full h-screen bg-[var(--background)]">
+        <div className="w-[24px] h-[24px] border-2 border-[var(--primary-accent)] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+  if (!authenticated) return <Navigate to="/" replace />;
+  return <>{children}</>;
 }
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/directory" element={<StudentsDirectory />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/directory" element={<RequireAuth><StudentsDirectory /></RequireAuth>} />
 
       {/* Admin routes */}
       <Route

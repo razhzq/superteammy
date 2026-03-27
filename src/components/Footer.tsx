@@ -22,7 +22,7 @@ const footerLinks = [
   {
     heading: "Ecosystem",
     links: [
-      { label: "Global Superteam", href: "#", external: true },
+      { label: "Ancora Imparo Global", href: "#", external: true },
       { label: "Solana Foundation", href: "#", external: true },
       { label: "Solana Developers", href: "#", external: true },
       { label: "Partner With Us", href: "#" },
@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="flex flex-col gap-[24px] w-full md:w-[300px] shrink-0">
             <img
               src="/superteam-footer.png"
-              alt="Superteam Malaysia"
+              alt="Ancora Imparo"
               className="h-[40px] w-auto self-start"
             />
             <p className="font-inter text-[14px] text-white/70 leading-[1.7]">
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* ── Bottom bar ── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-[12px] w-full py-[24px] border-t border-white/15">
           <span className="font-inter text-[12px] text-white/40">
-            © 2026 Superteam Malaysia. All rights reserved.
+            © 2026 Ancora Imparo. All rights reserved.
           </span>
           <div className="flex items-center gap-[24px]">
             <a
