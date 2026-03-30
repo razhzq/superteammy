@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Plus, Upload, CheckCircle, XCircle, AlertCircle, X, Search } from "lucide-react";
+import { Plus, Upload, CheckCircle, XCircle, X, Search } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 
 interface Student {

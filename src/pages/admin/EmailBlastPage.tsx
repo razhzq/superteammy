@@ -23,7 +23,7 @@ interface EmailFilters {
 export default function EmailBlastPage() {
   const [students, setStudents] = useState<Student[]>([]);
   const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
 
@@ -214,7 +214,7 @@ export default function EmailBlastPage() {
             >
               <option value="all">All Specialties</option>
               {uniqueSpecialties.map((specialty) => (
-                <option key={specialty} value={specialty}>
+                <option key={specialty} value={specialty ?? ""}>
                   {specialty}
                 </option>
               ))}
@@ -233,7 +233,7 @@ export default function EmailBlastPage() {
             >
               <option value="all">All Campuses</option>
               {uniqueCampuses.map((campus) => (
-                <option key={campus} value={campus}>
+                <option key={campus} value={campus ?? ""}>
                   {campus}
                 </option>
               ))}
