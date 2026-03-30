@@ -9,6 +9,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
+export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
+
 export const supabase = createClient(
   supabaseUrl ?? "",
   supabaseAnonKey ?? ""
