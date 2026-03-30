@@ -1,4 +1,4 @@
-# Superteam Malaysia Frontend
+# ARAMCO
 
 The official frontend for Superteam Malaysia — a community platform for Solana builders, creators, and founders in Malaysia.
 
